@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+// import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -10,27 +10,11 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 class Search extends Component {
   state = {
     books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    title: ""
   };
 
-  componentDidMount() {
-    this.loadBooks();
-  }
-
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
+  loadBooks = (data) => {
+    this.setState({ books: data, title: "" })
   };
 
   handleInputChange = event => {
@@ -40,9 +24,20 @@ class Search extends Component {
     });
   };
 
-  handleFormSubmit = event => {
+  handleSearchSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
+    if (this.state.title) {
+      API.getGoogleBooks(this.state.title)
+        .then(res => {
+          this.loadBooks(res.data.items);
+        })
+        .catch(err => console.log(err));
+    }
+  };
+  // Add to this function 
+  handleSaveBook = event => {
+    event.preventDefault();
+    if (this.state.title) {
       API.saveBook({
         title: this.state.title,
         author: this.state.author,
@@ -56,58 +51,52 @@ class Search extends Component {
   render() {
     return (
       <Container fluid>
+        <Jumbotron>
+          <h1>(React) Google Books Search</h1>
+          <h2>Search for and Save Books of Interest</h2>
+        </Jumbotron>
         <Row>
-          <Col size="md-6">
+          <Col size="md-12">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
+              <h4>Book Search:</h4>
+              <form>
+                <Input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  name="title"
+                  placeholder="Title (required)"
+                />
+                <FormBtn
+                  disabled={!(this.state.title)}
+                  onClick={this.handleSearchSubmit}
+                >
+                  Search
               </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
+              </form>
             </Jumbotron>
+          </Col>
+          </Row>
+          <Row>
+          <Col size="md-12 sm-12">
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
+                  <ListItem key={book.id}>
+                  {/* Don't use Link in this way - it will prepend the URL with the current URL */}
+                    <Link to={book.volumeInfo.previewLink}>
+                        {book.volumeInfo.title}
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    <p>Written by: {book.volumeInfo.authors[0]}</p>
+                    <p>Published on: {book.volumeInfo.publishedDate}</p>
+                    {/* <SaveBtn onClick={() => this.handleSaveBook(book._id)} /> */}
+                    <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} className="book-image" />
+                    <p>{book.volumeInfo.description}</p>
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
-            )}
+                <h3>Oh No! We couldn't find any books matching that title!</h3>
+              )}
           </Col>
         </Row>
       </Container>
