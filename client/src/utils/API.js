@@ -1,11 +1,11 @@
 import axios from "axios";
-require('dotenv').config();
+import googleAPIKey from "./keys.js"
 
 export default {
 
   getGoogleBooks: function (book) {
 
-    var secret = process.env.googlebookskey;
+    var secret = googleAPIKey;
     var url = ` https://www.googleapis.com/books/v1/volumes?q=${book}+robot&key=${secret}`;
     return axios.get(url);
   },
