@@ -1,7 +1,8 @@
 .list-overflow-container {
   max-height: 545px;
   border: 1px #DDDDDD solid;
-  border-radius: 4px;
+  border-radius: 0.1rem;
+  padding: 2px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -11,9 +12,9 @@
 }
 
 .list-overflow-container li {
-  border-radius: 0px;
-  border-left: none;
-  border-right: none;
+  border: 1px #DDDDDD solid;
+  border-radius: 0.3rem;
+  margin: 3px;
 }
 
 .list-overflow-container li * {
@@ -21,13 +22,14 @@
 }
 
 .list-overflow-container li a {
+  /* Make it look like a button */
   color: #2A878C;
 }
 
 .list-overflow-container li:first-child {
-  border-top: none;
+  /* border-top: none; */
 }
 
 .list-overflow-container li:last-child {
-  border-bottom: none;
+  /* border-bottom: none; */
 }
