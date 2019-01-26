@@ -1,15 +1,13 @@
 import axios from "axios";
-import googleAPIKey from "./keys.js"
+// import googleAPIKey from "./keys.js"
 
 export default {
 
-  getGoogleBooks: function (book) {
-
-    var secret = googleAPIKey;
-    var url = ` https://www.googleapis.com/books/v1/volumes?q=${book}+robot&key=${secret}`;
-    return axios.get(url);
+  // Gets the books from Google
+  getBooksGoo: function (input) {
+    console.log("input: ", input)
+    return axios.get("/api/books/google/" + input);
   },
-
   // Gets all books
   getBooks: function () {
     return axios.get("/api/books");

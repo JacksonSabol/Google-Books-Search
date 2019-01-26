@@ -9,8 +9,10 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  // .get(booksController.findById)
-  // .put(booksController.update)
   .delete(booksController.remove);
+
+  // Matches with "/api/books/google/:input"
+router.route("/google/:input")
+.get(booksController.getGoogleBooks);
 
 module.exports = router;
