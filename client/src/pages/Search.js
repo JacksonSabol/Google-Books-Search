@@ -27,8 +27,9 @@ class Search extends Component {
   handleSearchSubmit = event => {
     event.preventDefault();
     if (this.state.title) {
-      API.getGoogleBooks(this.state.title)
+      API.getBooksGoo(this.state.title)
         .then(res => {
+          console.log(res)
           this.loadBooks(res.data.items);
         })
         .catch(err => console.log(err));

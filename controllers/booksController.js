@@ -1,4 +1,5 @@
 const db = require("../models");
+const axios = require("axios");
 
 // Defining methods for the booksController
 module.exports = {
@@ -21,5 +22,21 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  getGoogleBooks: function (req, res) {
+
+    require('dotenv').config();
+    var book = req.params.input
+    var secret = process.env.googleAPIKey;
+
+    var url = ` https://www.googleapis.com/books/v1/volumes?q=${book}&key=${secret}`;
+
+    console.log(url)
+    axios.get(url)
+    .then(function (response) {
+      res.json(response.data)
+
+  })
   }
 };
