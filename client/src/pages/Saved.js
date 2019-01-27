@@ -47,7 +47,7 @@ class Saved extends Component {
                     <p>Written by: {book.author}</p>
                     <p>Published on: {book.date}</p>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                    <img src={book.link} alt={book.title} className="book-image" />
+                    <img src={book.image} alt={book.title} className="book-image" />
                     <p>{book.description}</p>
                   </ListItem>
                 ))}
