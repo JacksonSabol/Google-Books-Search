@@ -36,17 +36,31 @@ class Search extends Component {
     }
   };
   // Add to this function 
-  handleSaveBook = event => {
-    event.preventDefault();
-    if (this.state.title) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
+  handleSaveBook = id => {
+    // event.preventDefault();
+    // if (this.state.title) {
+    //   API.saveBook({
+    //     title: this.state.title,
+    //     author: this.state.author,
+    //     synopsis: this.state.synopsis
+    //   })
+    //     .then(res => this.loadBooks())
+    //     .catch(err => console.log(err));
+    // }
+    const savedBook = this.state.books.filter(book => book.id === id)
+    console.log(savedBook);
+    const bookDetails = {
+      googleId: id,
+      title: savedBook[0].volumeInfo.title,
+      author: savedBook[0].volumeInfo.authors,
+      description: savedBook[0].volumeInfo.description,
+      image: savedBook[0].volumeInfo.imageLinks.thumbnail,
+      link: savedBook[0].volumeInfo.previewLink,
     }
+    API.saveBook(bookDetails)
+      .then(res => console.log("I am back from saved"))
+      .catch(err => console.log(err));
+      
   };
 
   render() {
@@ -76,20 +90,20 @@ class Search extends Component {
               </form>
             </Jumbotron>
           </Col>
-          </Row>
-          <Row>
+        </Row>
+        <Row>
           <Col size="md-12 sm-12">
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
                   <ListItem key={book.id}>
-                  {/* Don't use Link in this way - it will prepend the URL with the current URL */}
+                    {/* Don't use Link in this way - it will prepend the URL with the current URL */}
                     <Link to={book.volumeInfo.previewLink}>
-                        {book.volumeInfo.title}
+                      {book.volumeInfo.title}
                     </Link>
                     <p>Written by: {book.volumeInfo.authors[0]}</p>
                     <p>Published on: {book.volumeInfo.publishedDate}</p>
-                    {/* <SaveBtn onClick={() => this.handleSaveBook(book._id)} /> */}
+                    <button onClick={() => this.handleSaveBook(book.id)}>Save </button>
                     <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} className="book-image" />
                     <p>{book.volumeInfo.description}</p>
                   </ListItem>
