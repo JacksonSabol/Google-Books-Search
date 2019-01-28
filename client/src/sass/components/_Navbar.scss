@@ -1,0 +1,67 @@
+.navbar {
+    width: 100%;
+    font-size: 5rem;
+    text-decoration: none;
+    list-style: none;
+    color: $color-dark;
+    background-color: $color-lightWarm;
+    overflow: hidden;
+    font-family: $font-serif;
+    margin-bottom: 1em;
+    border-radius: 20px;
+    box-shadow: 5px 10px 8px $color-neutral-darker;
+    
+      &__brand{
+    font-family: $font-serif;
+    color: $color-dark;
+    background-color: $color-neutral;
+    text-decoration: none;
+    float: left;
+    padding: 1em 2em;
+    border-right: solid 2px $color-dark;
+
+      }
+      &__brand:hover{
+        color: $color-bright;
+        background-color: $color-lightCool;
+
+      }
+      &__brand:active{
+        color: $color-bright;
+        background-color: $color-lightCool;
+
+      }
+      &__nav{
+          float: right;
+          list-style: none;
+          text-decoration: none;
+          color: $color-dark;
+          padding: 1em 2em;
+        
+        
+      }
+
+}
+a.nav-link{
+    color: $color-dark;
+    
+    padding: 1em 2em;
+    cursor: pointer;
+   
+}
+a.nav-link:hover{
+    color: $color-bright;
+    
+    
+    cursor: pointer;
+    background-color: $color-lightCool;
+   
+}
+a.nav-link:active{
+    color: $color-bright;
+    ;
+    cursor: pointer;
+   
+    
+   
+}

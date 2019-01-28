@@ -5,6 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import { List, ListItem } from "../components/List";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
+import "../index.css";
 
 class Saved extends Component {
   state = {
@@ -30,10 +31,9 @@ class Saved extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container >
         <Jumbotron>
-          <h1>(React) Google Books Search</h1>
-          <h2>Search for and Save Books of Interest</h2>
+       
         </Jumbotron>
         <Row>
           <Col size="md-12 sm-12">
@@ -44,11 +44,11 @@ class Saved extends Component {
                     <Link to={book.link}>
                         {book.title}
                     </Link>
-                    <p>Written by: {book.author}</p>
-                    <p>Published on: {book.date}</p>
+                    <p class="list-author">Written by: {book.author}</p>
+                    <p class="list-publish">Published on: {book.date}</p>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                     <img src={book.image} alt={book.title} className="book-image" />
-                    <p>{book.description}</p>
+                    <p class="list-description">{book.description}</p>
                   </ListItem>
                 ))}
               </List>

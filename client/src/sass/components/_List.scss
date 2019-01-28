@@ -1,0 +1,93 @@
+.list-overflow-container {
+    max-height: 80em;
+    border: 2px $color-lightCool-darker solid;
+    border-radius: 20px;
+    padding: 1em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 2em;
+  }
+  
+  .list-overflow-container ul {
+    margin: 1em;
+  }
+  
+  .list-overflow-container li {
+    height: 35em;
+    border: 2px $color-lightWarm solid;
+    border-radius: 20px;
+    margin: 1em;
+    padding: 2em;
+   
+  }
+  
+  .list-overflow-container li * {
+    cursor: pointer;
+  }
+  
+  .list-overflow-container li a {
+    /* Make it look like a button */
+    font-size: 4em;
+    font-family: $font-sans;
+    text-decoration: none;
+    padding: 0em 1em;
+    border-radius: 20px;
+    background-color: $color-bright;
+    color: $color-lightWarm;
+    border: solid 2px $color-dark;
+    outline: none;   
+    cursor: pointer;
+  }
+  .list-overflow-container li a:hover {
+    background-color: $color-lightWarm;
+    color: $color-bright;
+  }
+  .list-overflow-container li a:active {
+    background-color: $color-lightWarm;
+    color: $color-bright;
+    transform: translateY(4px)
+  }
+  .book-image{
+    float: right;
+    border-radius: 20px;
+    border: solid 2px $color-dark;
+  }
+  
+  .list-overflow-container li:first-child {
+    /* border-top: none; */
+  }
+  
+  .list-overflow-container li:last-child {
+    /* border-bottom: none; */
+  }
+  .list-button{
+    font-size: 4em;
+    font-family: $font-sans;
+    text-decoration: none;
+    padding: 0em 1em;
+    border-radius: 20px;
+    background-color: $color-bright;
+    color: $color-lightWarm;
+    border: solid 2px $color-dark;
+    outline: none;   
+    cursor: pointer; 
+
+  }
+ 
+  .list-author{
+    font-size: 2em;
+    font-family: $font-sans;
+    color: $color-lightCool;
+  }
+  .list-publish{
+    font-size: 2em;
+    font-family: $font-sans;
+    color: $color-lightCool;
+
+  }
+  .list-description{
+    font-size: 2em;
+    font-family: $font-sans;
+    color: $color-lightCool;
+
+  }

@@ -1,10 +1,10 @@
 import React from "react";
-import "./style.css";
+import "../../index.css";
 
 function Footer() {
   return (
     <footer className="footer">
-      <span>Google Books Search | 2019</span>
+      <p class="footer__span">Google Books Search | 2019</p>
     </footer>
   );
 }
