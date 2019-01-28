@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { List, ListItem } from "../components/List";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 
 class Saved extends Component {
@@ -22,9 +22,9 @@ class Saved extends Component {
   };
 
   // Function to delete book from Saved page
-  deleteBook = id => {
+  handleDeleteBook = id => {
     API.deleteBook(id)
-      .then(res => this.loadBooks())
+      .then(res => this.loadBooks()) //We need to think where this needs to go, and what we show, a clean screen??? because can't load the same books
       .catch(err => console.log(err));
   };
 
@@ -46,9 +46,9 @@ class Saved extends Component {
                     </Link>
                     <p>Written by: {book.author}</p>
                     <p>Published on: {book.date}</p>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                     <img src={book.image} alt={book.title} className="book-image" />
                     <p>{book.description}</p>
+                    <button onClick={() => this.handleDeleteBook(book._id)}>Delete </button>
                   </ListItem>
                 ))}
               </List>
