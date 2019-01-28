@@ -5,16 +5,36 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
 
 class Search extends Component {
   state = {
     books: [],
-    title: ""
+    title: "",
+    errorMessage: ""
   };
 
   loadBooks = (data) => {
-    this.setState({ books: data, title: "" })
+
+    let objBooks = { books: [] };
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].volumeInfo.imageLinks) {
+        let item = {
+          id: data[i].id,
+          title: data[i].volumeInfo.title,
+          authors: data[i].volumeInfo.authors,
+          publishedDate: data[i].volumeInfo.publishedDate,
+          description: data[i].volumeInfo.description,
+          image: data[i].volumeInfo.imageLinks.thumbnail,
+          link: data[i].volumeInfo.previewLink,
+        }
+        objBooks.books.push(item)
+      }
+    }
+    console.log(objBooks.books)
+    // console.log(objBooks.books[0].title)
+    this.setState({ books: objBooks.books, title: ""})
   };
 
   handleInputChange = event => {
@@ -29,38 +49,39 @@ class Search extends Component {
     if (this.state.title) {
       API.getBooksGoo(this.state.title)
         .then(res => {
-          console.log(res)
+          console.log(res.data.items);
           this.loadBooks(res.data.items);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err)
+          this.setState({
+            errorMessage: "We didn't find any book with this information"
+          });
+        });
     }
   };
   // Add to this function 
   handleSaveBook = id => {
-    // event.preventDefault();
-    // if (this.state.title) {
-    //   API.saveBook({
-    //     title: this.state.title,
-    //     author: this.state.author,
-    //     synopsis: this.state.synopsis
-    //   })
-    //     .then(res => this.loadBooks())
-    //     .catch(err => console.log(err));
-    // }
+
     const savedBook = this.state.books.filter(book => book.id === id)
     console.log(savedBook);
     const bookDetails = {
       googleId: id,
-      title: savedBook[0].volumeInfo.title,
-      author: savedBook[0].volumeInfo.authors,
-      description: savedBook[0].volumeInfo.description,
-      image: savedBook[0].volumeInfo.imageLinks.thumbnail,
-      link: savedBook[0].volumeInfo.previewLink,
+      title: savedBook[0].title,
+      author: savedBook[0].authors,
+      description: savedBook[0].description,
+      image: savedBook[0].image,
+      link: savedBook[0].link,
     }
     API.saveBook(bookDetails)
-      .then(res => console.log("I am back from saved"))
+      .then(res => {
+        console.log("I am back from saved");
+        this.setState({
+          books: [],
+        });
+      })
       .catch(err => console.log(err));
-      
+
   };
 
   render() {
@@ -98,14 +119,14 @@ class Search extends Component {
                 {this.state.books.map(book => (
                   <ListItem key={book.id}>
                     {/* Don't use Link in this way - it will prepend the URL with the current URL */}
-                    <Link to={book.volumeInfo.previewLink}>
-                      {book.volumeInfo.title}
+                    <Link to={book.link}>
+                      {book.title}
                     </Link>
-                    <p>Written by: {book.volumeInfo.authors[0]}</p>
-                    <p>Published on: {book.volumeInfo.publishedDate}</p>
+                    <p>Written by: {book.authors}</p>
+                    <p>Published on: {book.publishedDate}</p>
+                    <img src={book.image} alt={book.title} className="book-image" />
+                    <p>{book.description}</p>
                     <button onClick={() => this.handleSaveBook(book.id)}>Save </button>
-                    <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} className="book-image" />
-                    <p>{book.volumeInfo.description}</p>
                   </ListItem>
                 ))}
               </List>
