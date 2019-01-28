@@ -1,4 +1,5 @@
 import React from "react";
+import "../../index.css";
 
 // Exporting the Container, Row, and Col components from this file
 
@@ -21,7 +22,7 @@ export function Col({ size, children }) {
         .split(" ")
         .map(size => "col-" + size)
         .join(" ")}
-    > Saved Books: 
+    > 
       {children}
     </div>
   );

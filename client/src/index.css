@@ -1,0 +1,244 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2c3531; }
+
+html {
+  font-size: 62.5%; }
+
+a {
+  text-decoration: none;
+  outline: none; }
+
+a:link {
+  /* Applies to all unvisited links */
+  text-decoration: none;
+  outline: none; }
+
+a:visited {
+  /* Applies to all visited links */
+  text-decoration: none;
+  outline: none; }
+
+a:hover {
+  /* Applies to links under the pointer */
+  text-decoration: none;
+  outline: none; }
+
+a:active {
+  /* Applies to activated links */
+  text-decoration: none;
+  outline: none; }
+
+.delete-btn {
+  float: right;
+  color: #e74944; }
+
+.footer {
+  margin-top: 2em;
+  background-color: #d9b08c;
+  border-radius: 20px;
+  box-shadow: 5px 10px 8px #826953; }
+  .footer__span {
+    font-size: 2em;
+    font-family: serif;
+    color: #2c3531;
+    text-align: center;
+    padding: 2em; }
+
+.jumbotron {
+  margin-top: 3em;
+  text-align: center;
+  background-image: radial-gradient(#c1e8e2, #77a39c);
+  width: 100%;
+  text-decoration: none;
+  list-style: none;
+  color: #2c3531;
+  overflow: hidden;
+  margin-bottom: 1em;
+  border-radius: 20px;
+  box-shadow: 5px 10px 8px #116466; }
+  .jumbotron__heading {
+    font-family: "Special Elite", cursive;
+    font-size: 6rem; }
+  .jumbotron__subheading {
+    font-family: "Shadows Into Light Two", cursive;
+    font-size: 5rem;
+    color: #826953; }
+
+.list-overflow-container {
+  max-height: 80em;
+  border: 2px #77a39c solid;
+  border-radius: 20px;
+  padding: 1em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 2em; }
+
+.list-overflow-container ul {
+  margin: 1em; }
+
+.list-overflow-container li {
+  height: 35em;
+  border: 2px #ffcb9a solid;
+  border-radius: 20px;
+  margin: 1em;
+  padding: 2em; }
+
+.list-overflow-container li * {
+  cursor: pointer; }
+
+.list-overflow-container li a {
+  /* Make it look like a button */
+  font-size: 4em;
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
+  padding: 0em 1em;
+  border-radius: 20px;
+  background-color: #116466;
+  color: #ffcb9a;
+  border: solid 2px #2c3531;
+  outline: none;
+  cursor: pointer; }
+
+.list-overflow-container li a:hover {
+  background-color: #ffcb9a;
+  color: #116466; }
+
+.list-overflow-container li a:active {
+  background-color: #ffcb9a;
+  color: #116466;
+  transform: translateY(4px); }
+
+.book-image {
+  float: right;
+  border-radius: 20px;
+  border: solid 2px #2c3531; }
+
+.list-overflow-container li:first-child {
+  /* border-top: none; */ }
+
+.list-overflow-container li:last-child {
+  /* border-bottom: none; */ }
+
+.list-button {
+  font-size: 4em;
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
+  padding: 0em 1em;
+  border-radius: 20px;
+  background-color: #116466;
+  color: #ffcb9a;
+  border: solid 2px #2c3531;
+  outline: none;
+  cursor: pointer; }
+
+.list-author {
+  font-size: 2em;
+  font-family: "Raleway", sans-serif;
+  color: #c1e8e2; }
+
+.list-publish {
+  font-size: 2em;
+  font-family: "Raleway", sans-serif;
+  color: #c1e8e2; }
+
+.list-description {
+  font-size: 2em;
+  font-family: "Raleway", sans-serif;
+  color: #c1e8e2; }
+
+.navbar {
+  width: 100%;
+  font-size: 5rem;
+  text-decoration: none;
+  list-style: none;
+  color: #2c3531;
+  background-color: #ffcb9a;
+  overflow: hidden;
+  font-family: "Special Elite", cursive;
+  margin-bottom: 1em;
+  border-radius: 20px;
+  box-shadow: 5px 10px 8px #826953; }
+  .navbar__brand {
+    font-family: "Special Elite", cursive;
+    color: #2c3531;
+    background-color: #d9b08c;
+    text-decoration: none;
+    float: left;
+    padding: 1em 2em;
+    border-right: solid 2px #2c3531; }
+  .navbar__brand:hover {
+    color: #116466;
+    background-color: #c1e8e2; }
+  .navbar__brand:active {
+    color: #116466;
+    background-color: #c1e8e2; }
+  .navbar__nav {
+    float: right;
+    list-style: none;
+    text-decoration: none;
+    color: #2c3531;
+    padding: 1em 2em; }
+
+a.nav-link {
+  color: #2c3531;
+  padding: 1em 2em;
+  cursor: pointer; }
+
+a.nav-link:hover {
+  color: #116466;
+  cursor: pointer;
+  background-color: #c1e8e2; }
+
+a.nav-link:active {
+  color: #116466;
+  cursor: pointer; }
+
+.wrapper {
+  padding: 2em;
+  border-radius: 20px;
+  background-color: #826953; }
+
+.search {
+  background-color: #826953; }
+  .search__form {
+    display: flex;
+    justify-content: center;
+    background-color: #826953; }
+    .search__form--heading {
+      font-size: 4em;
+      font-family: "Raleway", sans-serif;
+      color: #ffcb9a;
+      padding-right: 1em; }
+    .search__form--input {
+      font-size: 4em;
+      color: #2c3531;
+      font-family: "Shadows Into Light Two", cursive;
+      padding: 1em 1em;
+      border-radius: 20px;
+      border: solid 2px #2c3531;
+      outline: none; }
+    .search__form--button {
+      font-size: 4em;
+      font-family: "Raleway", sans-serif;
+      text-decoration: none;
+      padding: 0em 1em;
+      border-radius: 20px;
+      background-color: #116466;
+      color: #ffcb9a;
+      border: solid 2px #2c3531;
+      outline: none;
+      cursor: pointer; }
+    .search__form--button:hover {
+      background-color: #ffcb9a;
+      color: #116466; }
+    .search__form--button:active {
+      background-color: #ffcb9a;
+      color: #116466;
+      transform: translateY(4px); }
+    .search__form--alert {
+      font-size: 4em;
+      font-family: "Raleway", sans-serif;
+      text-align: center;
+      color: #c1e8e2; }

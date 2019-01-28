@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 // import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
+import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
+import "../index.css";
 
 class Search extends Component {
   state = {
@@ -86,30 +88,29 @@ class Search extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container >
         <Jumbotron>
-          <h1>(React) Google Books Search</h1>
-          <h2>Search for and Save Books of Interest</h2>
+          
         </Jumbotron>
-        <Row>
+        <Row class="search">
           <Col size="md-12">
-            <Jumbotron>
-              <h4>Book Search:</h4>
-              <form>
-                <Input
+            <Wrapper>
+              <form class="search__form">
+              <p class= "search__form--heading">Book Search:</p>
+                <Input class="search__form--input"
                   value={this.state.title}
                   onChange={this.handleInputChange}
                   name="title"
                   placeholder="Title (required)"
                 />
-                <FormBtn
+                <FormBtn class="search__form--button"
                   disabled={!(this.state.title)}
                   onClick={this.handleSearchSubmit}
                 >
                   Search
               </FormBtn>
               </form>
-            </Jumbotron>
+            </Wrapper>
           </Col>
         </Row>
         <Row>
@@ -122,16 +123,18 @@ class Search extends Component {
                     <Link to={book.link}>
                       {book.title}
                     </Link>
-                    <p>Written by: {book.authors}</p>
-                    <p>Published on: {book.publishedDate}</p>
+
+                    <p class="list-authors">Written by: {book.authors}</p>
+                    <p class="list-publish">Published on: {book.publishedDate}</p>
                     <img src={book.image} alt={book.title} className="book-image" />
-                    <p>{book.description}</p>
-                    <button onClick={() => this.handleSaveBook(book.id)}>Save </button>
+                    <p class="list-description">{book.description}</p>
+                    <button class="list-button" onClick={() => this.handleSaveBook(book.id)}>Save </button>
+
                   </ListItem>
                 ))}
               </List>
             ) : (
-                <h3>Oh No! We couldn't find any books matching that title!</h3>
+                <p class="search__form--alert">Oh No! We couldn't find any books matching that title!</p>
               )}
           </Col>
         </Row>
