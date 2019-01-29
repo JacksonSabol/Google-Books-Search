@@ -37,31 +37,33 @@
           text-decoration: none;
           color: $color-dark;
           padding: 1em 2em;
-        
-        
+        &--item{
+            color: $color-dark;
+            padding: 1em 2em;
+            cursor: pointer;
+        }
+        &--item:hover{
+            color: $color-bright;
+            cursor: pointer;
+            background-color: $color-lightCool;
+        }
+        &--item:active{
+            color: $color-bright;
+            cursor: pointer;
+        } 
       }
-
 }
-a.nav-link{
-    color: $color-dark;
-    
-    padding: 1em 2em;
-    cursor: pointer;
-   
-}
-a.nav-link:hover{
-    color: $color-bright;
-    
-    
-    cursor: pointer;
-    background-color: $color-lightCool;
-   
-}
-a.nav-link:active{
-    color: $color-bright;
-    ;
-    cursor: pointer;
-   
-    
-   
-}
+// a.navbar__nav--item {
+//     color: $color-dark;
+//     padding: 1em 2em;
+//     cursor: pointer;
+// }
+// a.navbar__nav--item:hover {
+//     color: $color-bright;
+//     cursor: pointer;
+//     background-color: $color-lightCool;
+// }
+// a.navbar__nav--item:active {
+//     color: $color-bright;
+//     cursor: pointer;
+// }
