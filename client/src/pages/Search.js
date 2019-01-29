@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-// import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
+import Moment from "moment";
 import "../index.css";
 
 class Search extends Component {
   state = {
     books: [],
     title: "",
-    errorMessage: ""
+    errorMessage: "Type in the title of a book you'd like to read!"
   };
 
   loadBooks = (data) => {
@@ -57,14 +56,13 @@ class Search extends Component {
         .catch(err => {
           console.log(err)
           this.setState({
-            errorMessage: "We didn't find any book with this information"
+            errorMessage: "Oh No! We couldn't find any books related to your query!"
           });
         });
     }
   };
   // Add to this function 
   handleSaveBook = id => {
-
     const savedBook = this.state.books.filter(book => book.id === id)
     console.log(savedBook);
     const bookDetails = {
@@ -74,13 +72,11 @@ class Search extends Component {
       description: savedBook[0].description,
       image: savedBook[0].image,
       link: savedBook[0].link,
+      date: savedBook[0].publishedDate
     }
     API.saveBook(bookDetails)
       .then(res => {
-        console.log("I am back from saved");
-        this.setState({
-          books: [],
-        });
+        this.props.history.push("/saved");
       })
       .catch(err => console.log(err));
 
@@ -89,21 +85,19 @@ class Search extends Component {
   render() {
     return (
       <Container >
-        <Jumbotron>
-          
-        </Jumbotron>
-        <Row class="search">
+        <Jumbotron />
+        <Row className="search">
           <Col size="md-12">
             <Wrapper>
-              <form class="search__form">
-              <p class= "search__form--heading">Book Search:</p>
-                <Input class="search__form--input"
+              <form className="search__form">
+              <p className= "search__form--heading">Book Search:</p>
+                <Input className="search__form--input"
                   value={this.state.title}
                   onChange={this.handleInputChange}
                   name="title"
                   placeholder="Title (required)"
                 />
-                <FormBtn class="search__form--button"
+                <FormBtn className="search__form--button"
                   disabled={!(this.state.title)}
                   onClick={this.handleSearchSubmit}
                 >
@@ -119,22 +113,17 @@ class Search extends Component {
               <List>
                 {this.state.books.map(book => (
                   <ListItem key={book.id}>
-                    {/* Don't use Link in this way - it will prepend the URL with the current URL */}
-                    <Link to={book.link}>
-                      {book.title}
-                    </Link>
-
-                    <p class="list-authors">Written by: {book.authors}</p>
-                    <p class="list-publish">Published on: {book.publishedDate}</p>
+                    <a href={book.link} rel="noopener noreferrer" target="_blank">{book.title}</a>
                     <img src={book.image} alt={book.title} className="book-image" />
-                    <p class="list-description">{book.description}</p>
-                    <button class="list-button" onClick={() => this.handleSaveBook(book.id)}>Save </button>
-
+                    <p className="list-author">Written by: {book.authors}</p>
+                    <p className="list-publish">Published on: {Moment(book.publishedDate, "YYYY-MM-DDTHh:mm:ss").format("MM/DD/YYYY")}</p>
+                    <p className="list-description">{book.description}</p>
+                    <button className="list-button" onClick={() => this.handleSaveBook(book.id)}>Save </button>
                   </ListItem>
                 ))}
               </List>
             ) : (
-                <p class="search__form--alert">Oh No! We couldn't find any books matching that title!</p>
+                <p className="search__form--alert">{this.state.errorMessage}</p>
               )}
           </Col>
         </Row>

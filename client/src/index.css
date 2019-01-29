@@ -76,7 +76,8 @@ a:active {
   margin-top: 2em; }
 
 .list-overflow-container ul {
-  margin: 1em; }
+  margin: 1em;
+  list-style: none; }
 
 .list-overflow-container li {
   height: 35em;
@@ -180,20 +181,17 @@ a:active {
     text-decoration: none;
     color: #2c3531;
     padding: 1em 2em; }
-
-a.nav-link {
-  color: #2c3531;
-  padding: 1em 2em;
-  cursor: pointer; }
-
-a.nav-link:hover {
-  color: #116466;
-  cursor: pointer;
-  background-color: #c1e8e2; }
-
-a.nav-link:active {
-  color: #116466;
-  cursor: pointer; }
+    .navbar__nav--item {
+      color: #2c3531;
+      padding: 1em 2em;
+      cursor: pointer; }
+    .navbar__nav--item:hover {
+      color: #116466;
+      cursor: pointer;
+      background-color: #c1e8e2; }
+    .navbar__nav--item:active {
+      color: #116466;
+      cursor: pointer; }
 
 .wrapper {
   padding: 2em;

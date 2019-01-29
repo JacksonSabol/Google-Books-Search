@@ -9,29 +9,13 @@ function Navbar() {
       <Link className="navbar__brand" to="/">
         Google Books Search
       </Link>
-      <div>
-        <div className="navbar__nav">
-          <a className="nav__nav--item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/saved"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Saved  
-            </Link>
-          </a>
-          <a className="nav__nav--item">
-            <Link
-              to="/search"
-              className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}
-            >
-              Search
-            </Link>
-          </a>
-        </div>
+      <div className="navbar__nav">
+        <Link to="/" className="navbar__nav--item">
+          Saved
+        </Link>
+        <Link to="/search" className="navbar__nav--item">
+          Search
+        </Link>
       </div>
     </nav>
   );
