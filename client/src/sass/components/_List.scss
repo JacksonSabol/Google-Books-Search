@@ -6,6 +6,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
     margin-top: 2em;
+    background-color: $color-neutral-evendarker;
+    box-shadow: inset 0px 0px 15px $color-dark;
   }
   
   .list-overflow-container ul {
@@ -14,11 +16,15 @@
   }
   
   .list-overflow-container li {
-    height: 35em;
+    
     border: 2px $color-lightWarm solid;
     border-radius: 20px;
     margin: 1em;
     padding: 2em;
+    overflow: auto;
+    background-color: $color-neutral-darker;
+    box-shadow: 5px 10px 8px $color-dark;
+    
   }
   
   .list-overflow-container li * {
@@ -37,6 +43,7 @@
     border: solid 2px $color-dark;
     outline: none;   
     cursor: pointer;
+    box-shadow: 5px 5px 8px $color-dark;
   }
   .list-overflow-container li a:hover {
     background-color: $color-lightWarm;
@@ -51,6 +58,7 @@
     float: right;
     border-radius: 20px;
     border: solid 2px $color-dark;
+    box-shadow: 5px 5px 8px $color-dark;
   }
   
   .list-overflow-container li:first-child {
@@ -70,7 +78,8 @@
     color: $color-lightWarm;
     border: solid 2px $color-dark;
     outline: none;   
-    cursor: pointer; 
+    cursor: pointer;
+    box-shadow: 5px 5px 8px $color-dark; 
 
   }
  
