@@ -22,6 +22,12 @@ body {
       @include responsive(phone) { // width < 600?
         font-size: 37.5%; //1rem = 6px 6/16 = 37.5%
       }
+      @include responsive(mid-mini) { //
+        font-size: 29%; //
+      }
+      @include responsive(mini) { //
+        font-size: 20%; //
+      }
   }
   a {
     

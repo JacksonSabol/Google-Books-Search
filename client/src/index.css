@@ -17,6 +17,12 @@ html {
   @media only screen and (max-width: 37.5em) {
     html {
       font-size: 37.5%; } }
+  @media only screen and (max-width: 33em) {
+    html {
+      font-size: 29%; } }
+  @media only screen and (max-width: 25.5em) {
+    html {
+      font-size: 20%; } }
 
 a {
   text-decoration: none;
@@ -183,7 +189,6 @@ a:active {
   .navbar__brand {
     font-family: "Special Elite", cursive;
     color: #2c3531;
-    background-color: #d9b08c;
     text-decoration: none;
     float: left;
     padding: 1em 1em;
@@ -191,20 +196,14 @@ a:active {
     @media only screen and (max-width: 93em) {
       .navbar__brand {
         text-align: center;
-        border-right: none;
-        background-color: #ffcb9a; } }
+        border-right: none; } }
   .navbar__brand:hover {
-    color: #116466;
-    background-color: #c1e8e2; }
-    @media only screen and (max-width: 93em) {
-      .navbar__brand:hover {
-        background-color: #ffcb9a; } }
+    color: #116466; }
   .navbar__brand:active {
-    color: #116466;
-    background-color: #c1e8e2; }
+    color: #116466; }
     @media only screen and (max-width: 93em) {
       .navbar__brand:active {
-        background-color: #ffcb9a; } }
+        color: #116466; } }
   .navbar__nav {
     float: right;
     list-style: none;
@@ -213,21 +212,14 @@ a:active {
     padding: 1em 1em; }
     .navbar__nav--item {
       color: #2c3531;
-      padding: 1em 2em;
+      padding: 1em 1em;
       cursor: pointer; }
     .navbar__nav--item:hover {
       color: #116466;
-      cursor: pointer;
-      background-color: #c1e8e2; }
-      @media only screen and (max-width: 93em) {
-        .navbar__nav--item:hover {
-          background-color: #ffcb9a; } }
+      cursor: pointer; }
     .navbar__nav--item:active {
       color: #116466;
       cursor: pointer; }
-      @media only screen and (max-width: 93em) {
-        .navbar__nav--item:active {
-          background-color: #ffcb9a; } }
 
 .wrapper {
   border-radius: 20px;
@@ -277,8 +269,13 @@ a:active {
       background-color: #ffcb9a;
       color: #116466;
       transform: translateY(4px); }
-    .search__form--alert {
+    .search__form--openmsg {
       font-size: 4em;
       font-family: "Raleway", sans-serif;
       text-align: center;
       color: #c1e8e2; }
+    .search__form--alert {
+      font-size: 4em;
+      font-family: "Raleway", sans-serif;
+      text-align: center;
+      color: #c75050; }

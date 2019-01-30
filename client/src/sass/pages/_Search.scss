@@ -51,12 +51,17 @@
             transform: translateY(4px)
 
         }
-        &--alert{
+        &--openmsg{
             font-size: 4em;
             font-family: $font-sans;
             text-align: center;
             color: $color-lightCool;
-
+        }
+        &--alert{
+            font-size: 4em;
+            font-family: $font-sans;
+            text-align: center;
+            color: $color-alert;
         }
 
     }

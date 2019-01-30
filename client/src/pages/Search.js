@@ -33,8 +33,6 @@ class Search extends Component {
         objBooks.books.push(item)
       }
     }
-    console.log(objBooks.books)
-    // console.log(objBooks.books[0].title)
     this.setState({ books: objBooks.books, title: ""})
   };
 
@@ -50,7 +48,6 @@ class Search extends Component {
     if (this.state.title) {
       API.getBooksGoo(this.state.title)
         .then(res => {
-          console.log(res.data.items);
           this.loadBooks(res.data.items);
         })
         .catch(err => {
@@ -64,7 +61,6 @@ class Search extends Component {
   // Add to this function 
   handleSaveBook = id => {
     const savedBook = this.state.books.filter(book => book.id === id)
-    console.log(savedBook);
     const bookDetails = {
       googleId: id,
       title: savedBook[0].title,
@@ -123,7 +119,7 @@ class Search extends Component {
                 ))}
               </List>
             ) : (
-                <p className="search__form--alert">{this.state.errorMessage}</p>
+                <p className="search__form--openmsg">{this.state.errorMessage}</p>
               )}
           </Col>
         </Row>

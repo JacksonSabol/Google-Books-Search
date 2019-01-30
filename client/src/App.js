@@ -12,9 +12,9 @@ function App() {
       <div>
         <Navbar />
         <Wrapper>
-          <Route exact path="/" component={Saved} />
-          <Route exact path="/saved" component={Saved} />
+          <Route exact path="/" component={Search} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/saved" component={Saved} />
         </Wrapper>
         <Footer />
       </div>
