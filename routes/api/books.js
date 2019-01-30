@@ -11,8 +11,8 @@ router
   .route("/:id")
   .delete(booksController.remove);
 
-  // Matches with "/api/books/google/:input"
+// Matches with "/api/books/google/:input"
 router.route("/google/:input")
-.get(booksController.getGoogleBooks);
+  .get(booksController.getGoogleBooks);
 
 module.exports = router;

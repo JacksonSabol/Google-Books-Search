@@ -10,7 +10,7 @@ function Navbar() {
         Google Books Search
       </Link>
       <div className="navbar__nav">
-        <Link to="/" className="navbar__nav--item">
+        <Link to="/saved" className="navbar__nav--item">
           Saved
         </Link>
         <Link to="/search" className="navbar__nav--item">
