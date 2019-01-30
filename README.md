@@ -137,7 +137,7 @@ export default Search;
  ```
 ### Feel free to play around with the application and take an interest in a new book along the way!
 
-[Link to my Game](https://google-books-search-react.herokuapp.com/)
+[Link to our Application](https://google-books-search-react.herokuapp.com/)
 
 Thank you for reading!
 
