@@ -11,7 +11,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log("body...: ", req.body)
+    // Google API returns authors as an array now, so updating this to split then join by commas so as to not throw a 
+    // Mongoose error when it tries casting an array to a string
+    req.body.author = req.body.author.join(", ");
     db.Book
       .create(req.body)
       .then(dbModel => res.json(dbModel))
